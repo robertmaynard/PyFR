@@ -2,6 +2,7 @@
 
 from abc import ABCMeta, abstractmethod, abstractproperty
 from collections import deque
+import time
 
 import numpy as np
 
@@ -113,8 +114,12 @@ class BaseIntegrator(object, metaclass=ABCMeta):
         pass
 
     def run(self):
+        t0 = time.time()
+        print('Start time: {}'.format(t0))
         for t in self.tlist:
             self.advance_to(t)
+        print('nfevals: {}'.format(self._stepper_nfevals))
+        print('Delta time: {}'.format(time.time() - t0))
 
     def collect_stats(self, stats):
         stats.set('solver-time-integrator', 'tcurr', self.tcurr)
