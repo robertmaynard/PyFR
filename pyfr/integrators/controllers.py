@@ -34,7 +34,6 @@ class BaseController(BaseIntegrator):
 
         # Stats on the most recent step
         self.stepinfo = []
-        self.wctime0 = None
 
         # Event handlers for advance_to
         self.completed_step_handlers = proxylist([])
